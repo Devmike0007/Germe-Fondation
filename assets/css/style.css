@@ -104,6 +104,43 @@ nav {
   align-items: center;
 }
 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  gap: 0.375rem;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 3px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  align-items: center;
+}
+
 nav a {
   display: inline-block;
   padding: 0.5rem;
@@ -285,32 +322,45 @@ nav a:hover, nav a:focus {
     padding: 1rem;
   }
 
-  nav {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
     width: 100%;
-    order: 3;
-    justify-content: flex-start;
-    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 2px solid var(--light-accent);
+    gap: 0;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
-  nav a {
+  .site-nav.active {
+    display: flex;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--light-accent);
     flex: 1 1 auto;
-    text-align: center;
-    min-height: 48px;
-    padding: 0.75rem 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  .lede {
+    text-align: left;
+    min-height: auto;
     font-size: 1rem;
   }
 
-  .grid, .values-list {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.75rem;
+  .site-nav a:last-child {
+    border-bottom: none;
   }
 
-  .grid li, .values-list li {
-    padding: 1rem;
+  .site-header {
+    position: relative;
   }
 }
 
@@ -323,13 +373,22 @@ nav a:hover, nav a:focus {
     height: 40px;
   }
 
-  nav {
-    justify-content: space-evenly;
+  .menu-toggle {
+    padding: 0.375rem;
   }
 
-  nav a {
-    padding: 0.5rem;
-    font-size: 0.75rem;
+  .menu-toggle span {
+    width: 20px;
+    height: 2.5px;
+  }
+
+  .site-nav {
+    padding: 0.5rem 0;
+  }
+
+  .site-nav a {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
   }
 
   .hero {

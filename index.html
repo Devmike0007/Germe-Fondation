@@ -6,13 +6,17 @@
   <meta name="description" content="Germe Fondation — Initiative citoyenne engagée dans la formation d'une jeunesse consciente et responsable en Afrique.">
   <meta name="theme-color" content="#2b8a3e">
   <title>Germe Fondation — Accueil</title>
-  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="index.html"><img src="logo.jpeg" alt="Germe Fondation"></a>
-      <nav aria-label="Navigation principale">
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav">
         <a href="index.html" aria-current="page">Accueil</a>
         <a href="about.html">À propos</a>
         <a href="mission.html">Mission</a>
@@ -54,5 +58,25 @@
       <p><a href="contact.html">Contactez-nous</a></p>
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('.site-nav');
+    
+    menuToggle.addEventListener('click', () => {
+      siteNav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    });
+    
+    // Fermer le menu quand un lien est cliqué
+    siteNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>
